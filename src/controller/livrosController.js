@@ -2,7 +2,9 @@ import livros from "../models/Livro.js";
 
 class LivroController {
     static buscarLivros = (req, res) => {
-        livros.find((err, livros)=>{
+        livros.find()
+              .populate('autor')
+              .exec((err, livros)=>{
             if(err){
                 res.status(400).send({message: `${err.message} - Livros não localizados`})
             }else{
@@ -13,7 +15,9 @@ class LivroController {
 
     static buscarLivro = (req, res) => {
         let {id} = req.params;
-        livros.findById(id, (err, livros) => {
+        livros.findById(id)
+              .populate('autor')
+              .exec((err, livros) => {
             if(err){
                 res.status(400).send({message: `${err.message} - Livro não localizado`})
             }else{
@@ -37,9 +41,9 @@ class LivroController {
         let { id } = req.params;
         livros.findByIdAndUpdate(id, {$set: req.body}, (err)=>{
             if(!err){
-                res.status(200).send({message: `Livro atualizado com sucesso`})
+                res.status(200).send({message: `Livro de ${id} foi atualizado com sucesso`})
             }else{
-                res.status(500).send({message: err.message})
+                res.status(500).send({message: `${err.message} Ocorreu um Erro ao Editar o Livro`})
             }
         })
     }

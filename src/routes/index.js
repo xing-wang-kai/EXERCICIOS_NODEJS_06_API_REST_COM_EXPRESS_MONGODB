@@ -4,7 +4,7 @@ import autores from './autoresRoutes.js'
 
 const routes = (app) =>{
     app.route('/').get((req,res)=>{
-        res.status(200).json({titulo: 'Curso de Nodejs'})
+        res.status(200).json({titulo: `<h1> Curso de Node js </h1>`})
     })
     app.use(
         express.json(),

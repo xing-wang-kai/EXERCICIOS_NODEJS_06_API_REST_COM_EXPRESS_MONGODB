@@ -2,7 +2,7 @@ import autores from "../models/Autor.js";
 
 class AutoresController {
     static buscarAutores = (req, res) => {
-        autores.find((err, autores) =>{
+        autores.find((err, autores) => {
             if(!err){
                 res.status(200).send(autores)
             }else{
