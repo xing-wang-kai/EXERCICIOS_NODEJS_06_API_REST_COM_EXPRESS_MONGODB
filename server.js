@@ -22,5 +22,5 @@ const server = http.createServer((req, res)=>{
 
 
 app.listen(port, ()=>{
-    console.log(chalk.bgGreen.black(`   Servidor Rodando com sucesso na porta ${port}  `));
+    console.log(chalk.bgGreen.black(`   Servidor Rodando com sucesso na porta http://localhost:${port}  `));
 })
